@@ -1,3 +1,5 @@
+#include <SoftwareSerial.h>   //Software Serial Port
+
 int Sensorpin = A0;
 int IRpin = 2;
 int Redpin = 3;
@@ -7,7 +9,7 @@ boolean Redon = false;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  pinMode(LDRpin, INPUT);
+  pinMode(Sensorpin, INPUT);
   pinMode(IRpin, OUTPUT);
   pinMode(Redpin, OUTPUT);
 }
