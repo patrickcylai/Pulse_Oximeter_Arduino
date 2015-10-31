@@ -4,14 +4,15 @@ int Sensorpin = A0;
 int IRpin = 2;
 int Redpin = 3;
 boolean IRon = false;
-boolean Redon = false;
+boolean Redon = true;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(Sensorpin, INPUT);
   pinMode(IRpin, OUTPUT);
   pinMode(Redpin, OUTPUT);
+  digitalWrite(Redpin, HIGH);
 }
 
 void loop() {
@@ -21,32 +22,33 @@ void loop() {
 
   Serial.println(voltage, DEC);
   delay(1);
+  
   char command = Serial.read();
-  if (command == 'i')
-  {
-    if (IRon == false)
-    {
-      digitalWrite(IRpin, HIGH);
-      IRon = true;
-    }
-    else
-    {
-      digitalWrite(IRpin, LOW);
-      IRon = false;
-    }
-  }
+//  if (command == 'i')
+//  {
+//    if (IRon == false)
+//    {
+//      digitalWrite(IRpin, HIGH);
+//      IRon = true;
+//    }
+//    else
+//    {
+//      digitalWrite(IRpin, LOW);
+//      IRon = false;
+//    }
+//  }
 
-  if (command == 'r')
-  {
-    if (Redon == false)
-    {
-      digitalWrite(Redpin, HIGH);
-      Redon = true;
-    }
-    else
-    {
-      digitalWrite(Redpin, LOW);
-      Redon = false;
-    }
-  }
+//  if (command == 'r')
+//  {
+//    if (Redon == false)
+//    {
+//      digitalWrite(Redpin, HIGH);
+//      Redon = true;
+//    }
+//    else
+//    {
+//      digitalWrite(Redpin, LOW);
+//      Redon = false;
+//    }
+//  }
 }
