@@ -1,24 +1,24 @@
+clc;
+clear;
+close all;
+a=arduino();
 Sensorpin = 'A0';
 IRpin = 'D2';
 REDpin = 'D3';
 
 IRon = false;
 REDon = true;
-
-while true
+writeDigitalPin(a, IRpin,1);
+pause(2);
+interv = 1000;
+t=1;
+x=0;
+while t<interv
    voltage =  readVoltage(a, Sensorpin);
-   
-   if IRon
-       writeDigitalPin(a, IRpin, 1);
-   else
-       writeDigitalPin(a, IRpin, 0);
-   end
-   
-   if REDon
-       writeDigitalPin(a, REDpin, 1);
-   else
-       writeDigitalPin(a, REDpin, 0);
-   end
-   prompt = 'Enter a value for RED';
-   REDon = input(prompt)
+   x=[x,voltage];
+   %drawnow;
+   t=t+1;
 end
+
+plot(x);
+grid on;

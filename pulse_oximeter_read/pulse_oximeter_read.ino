@@ -8,10 +8,11 @@ boolean Redon = false;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(115200);
   pinMode(Sensorpin, INPUT);
   pinMode(IRpin, OUTPUT);
   pinMode(Redpin, OUTPUT);
+  digitalWrite(Redpin, HIGH);
 }
 
 void loop() {
@@ -21,6 +22,7 @@ void loop() {
 
   Serial.println(voltage, DEC);
   delay(1);
+  
   char command = Serial.read();
   if (command == 'i')
   {
